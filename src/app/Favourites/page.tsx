@@ -4,6 +4,8 @@ import { CldUploadButton } from "next-cloudinary";
 import { Icon } from '@iconify/react';
 import UploadButton from '../Gallery/upload_button';
 import ImageUpload from '../Gallery/imageUpload';
+import ForceRefresh from '@/components/force_refresh';
+import FavouritesGrid from './FavouriteGrid';
 
 
 
@@ -17,7 +19,7 @@ export default async function FavouritesPage() {
     .expression('resource_type:image AND tags=favourite')
     .sort_by('created_at','desc')
     .with_field('tags')
-    .max_results(5)
+    .max_results(30)
     .execute () as {resources:SearchResult[]}
     
 
@@ -25,30 +27,37 @@ export default async function FavouritesPage() {
     
 return (
     <section>
+        <ForceRefresh/>
         <div className="flex justify-between">
             <h1 className="text-4xl font-bold ">Favourites</h1>
            
         </div>
+        <div>
+        <FavouritesGrid intialResources={results.resources}
+        
+        
+        />
+        </div>
 
-        <div className='columns-4 gap-4 mx-auto p-5 space-y-4'>
+        {/* <div className='columns-4 gap-4 mx-auto p-5 space-y-4'>
         {results.resources.map((items , i) => {
             return (
                 <div key={i} >
         <ImageUpload className='rounded-sm'
         key={items.public_id}
-        path='/Favourites'
         src={items.public_id}
-        publicid={items.public_id}
+        // publicid={items.public_id}
         Imagedata={items}
         height={400}
         width={400}
         alt='publicId'
+       
         />
         </div>
             )
 
 })}
-        </div>
+        </div> */}
     </section>
 )
 }

@@ -2,16 +2,16 @@
 import { Icon } from "@iconify/react/dist/iconify.js"
 import { HeartIcon, MenuIcon, } from "lucide-react"
 import { CldImage, CldImageProps } from "next-cloudinary"
-import { Hearticon } from "../frontpage/icons/Hearticon"
+import { Hearticon } from "@/app/frontpage/icons/Hearticon"
 import {setFavouriteImage} from "./action"
 import { useState, useTransition } from "react"
-
 import { SearchResult } from "./page"
-import Fullheart from "../frontpage/icons/Fullheart"
+import Fullheart from "@/app/frontpage/icons/Fullheart"
 import MenuBar from "@/components/MenuBar"
+
         
 
-export default function ImageUpload(
+export default function AlbumName(
   props:
   {Imagedata:SearchResult;
    onUnheart?:(UnheartedResources:SearchResult) =>void}
@@ -55,9 +55,9 @@ export default function ImageUpload(
               className="cursor-pointer  hover:scale-150 transform transition-transform duration-300 hover:text-red-500  absolute top-2 left-2"/>
             
             )}
-             <MenuBar Image={Imagedata}/>
+            
            
-              
+              <MenuBar Image={Imagedata}/>
 
          
           
